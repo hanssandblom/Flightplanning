@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import se.iths.flightplanning.entity.UserEntity;
 import se.iths.flightplanning.service.UserService;
 
-import java.security.PublicKey;
 
 @RestController
 @RequestMapping("users")
