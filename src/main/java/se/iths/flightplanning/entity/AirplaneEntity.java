@@ -1,9 +1,8 @@
 package se.iths.flightplanning.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class AirplaneEntity {
@@ -15,6 +14,9 @@ public class AirplaneEntity {
     private String airplaneModel;
     private int numberOfSeat;
     private int numberOfStaff;
+
+    @ManyToMany(mappedBy = "routes")
+    private Set<FlightconnectionsEntity> flightconnectionsEntities = new HashSet<>();
 
     public AirplaneEntity(String airplaneModel, int numberOfSeat, int numberOfStaff) {
         this.airplaneModel = airplaneModel;
@@ -55,5 +57,13 @@ public class AirplaneEntity {
 
     public void setNumberOfStaff(int numberOfStaff) {
         this.numberOfStaff = numberOfStaff;
+    }
+
+    public Set<FlightconnectionsEntity> getFlightconnectionsEntities() {
+        return flightconnectionsEntities;
+    }
+
+    public void setFlightconnectionsEntities(Set<FlightconnectionsEntity> flightconnectionsEntities) {
+        this.flightconnectionsEntities = flightconnectionsEntities;
     }
 }

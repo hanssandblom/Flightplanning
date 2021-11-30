@@ -1,5 +1,7 @@
 package se.iths.flightplanning.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +15,8 @@ public class FlightconnectionsEntity {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<AirplaneEntity> routes = new HashSet<>();
+    @ManyToOne
+    private UserEntity user;
 
     public FlightconnectionsEntity(Set<AirplaneEntity> routes) {
         this.routes = routes;
@@ -29,6 +33,7 @@ public class FlightconnectionsEntity {
         this.id = id;
     }
 
+    @JsonIgnore
     public Set<AirplaneEntity> getRoutes() {
         return routes;
     }
