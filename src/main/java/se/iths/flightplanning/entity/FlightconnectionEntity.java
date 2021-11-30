@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class FlightconnectionsEntity {
+public class FlightconnectionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,11 +18,11 @@ public class FlightconnectionsEntity {
     @ManyToOne
     private UserEntity user;
 
-    public FlightconnectionsEntity(Set<AirplaneEntity> routes) {
+    public FlightconnectionEntity(Set<AirplaneEntity> routes) {
         this.routes = routes;
     }
 
-    public FlightconnectionsEntity() {
+    public FlightconnectionEntity() {
     }
 
     public Long getId() {

@@ -18,7 +18,7 @@ public class UserEntity {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<FlightconnectionsEntity> routes = new ArrayList<>();
+    private List<FlightconnectionEntity> routes = new ArrayList<>();
 
     public UserEntity(String firstName, String lastName, String email, String telephone, String username, String password) {
         this.firstName = firstName;

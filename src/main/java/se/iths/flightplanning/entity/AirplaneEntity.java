@@ -16,7 +16,7 @@ public class AirplaneEntity {
     private int numberOfStaff;
 
     @ManyToMany(mappedBy = "routes")
-    private Set<FlightconnectionsEntity> flightconnectionsEntities = new HashSet<>();
+    private Set<FlightconnectionEntity> flightconnectionsEntities = new HashSet<>();
 
     public AirplaneEntity(String airplaneModel, int numberOfSeat, int numberOfStaff) {
         this.airplaneModel = airplaneModel;
@@ -59,11 +59,11 @@ public class AirplaneEntity {
         this.numberOfStaff = numberOfStaff;
     }
 
-    public Set<FlightconnectionsEntity> getFlightconnectionsEntities() {
+    public Set<FlightconnectionEntity> getFlightconnectionsEntities() {
         return flightconnectionsEntities;
     }
 
-    public void setFlightconnectionsEntities(Set<FlightconnectionsEntity> flightconnectionsEntities) {
+    public void setFlightconnectionsEntities(Set<FlightconnectionEntity> flightconnectionsEntities) {
         this.flightconnectionsEntities = flightconnectionsEntities;
     }
 }
