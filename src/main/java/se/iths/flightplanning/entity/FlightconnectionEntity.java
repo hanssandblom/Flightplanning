@@ -18,6 +18,7 @@ public class FlightconnectionEntity {
     @ManyToOne
     private UserEntity user;
 
+
     public FlightconnectionEntity(Set<AirplaneEntity> routes) {
         this.routes = routes;
     }
