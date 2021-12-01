@@ -16,5 +16,8 @@ public class UserService {
     public UserEntity createUser(UserEntity userEntity) {
         return userRepository.save(userEntity);
     }
+    public Iterable<UserEntity> findAllUsers() {
+        return userRepository.findAll();
+    }
 
 }
