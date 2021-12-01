@@ -6,4 +6,5 @@ import se.iths.flightplanning.entity.AirplaneEntity;
 
 @Repository
 public interface AirplaneRepository extends CrudRepository<AirplaneEntity, Long> {
+    AirplaneEntity findByAirplaneModel(String airplaneModel);
 }

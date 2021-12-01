@@ -12,15 +12,12 @@ public class FlightconnectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<AirplaneEntity> routes = new HashSet<>();
+    private String name;
     @ManyToOne
     private UserEntity user;
 
-
-    public FlightconnectionEntity(Set<AirplaneEntity> routes) {
-        this.routes = routes;
+    public FlightconnectionEntity(String name) {
+        this.name = name;
     }
 
     public FlightconnectionEntity() {
@@ -34,12 +31,19 @@ public class FlightconnectionEntity {
         this.id = id;
     }
 
-    @JsonIgnore
-    public Set<AirplaneEntity> getRoutes() {
-        return routes;
+    public String getName() {
+        return name;
     }
 
-    public void setRoutes(Set<AirplaneEntity> routes) {
-        this.routes = routes;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }
