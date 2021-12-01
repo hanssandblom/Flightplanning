@@ -2,7 +2,9 @@ package se.iths.flightplanning.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class UserEntity {
@@ -19,6 +21,19 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<FlightconnectionEntity> routes = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<AirplaneEntity> airplaneModels = new HashSet<>();
+
+    public void addAirplane(AirplaneEntity airplaneModel) {
+        airplaneModels.add(airplaneModel);
+        airplaneModel.getUsers().add(this);
+    }
+
+    public void addRoute(FlightconnectionEntity route){
+        routes.add(route);
+        route.setUser(this);
+    }
 
     public UserEntity(String firstName, String lastName, String email, String telephone, String username, String password) {
         this.firstName = firstName;
@@ -87,4 +102,13 @@ public class UserEntity {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<FlightconnectionEntity> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<FlightconnectionEntity> routes) {
+        this.routes = routes;
+    }
+
 }
