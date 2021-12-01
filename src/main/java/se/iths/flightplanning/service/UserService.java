@@ -18,7 +18,7 @@ public class UserService {
     }
 
     public UserEntity createUser(UserEntity userEntity) {
-        AirplaneEntity airplaneToAdd = airplaneRepository.findByAirplane("Modell101");
+        AirplaneEntity airplaneToAdd = airplaneRepository.findByAirplaneModel("Modell101");
         userEntity.addAirplane(airplaneToAdd);
         return userRepository.save(userEntity);
     }

@@ -1,5 +1,7 @@
 package se.iths.flightplanning.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -45,6 +47,14 @@ public class UserEntity {
     }
 
     public UserEntity() {
+    }
+
+    public Set<AirplaneEntity> getAirplaneModels() {
+        return airplaneModels;
+    }
+
+    public void setAirplaneModels(Set<AirplaneEntity> airplaneModels) {
+        this.airplaneModels = airplaneModels;
     }
 
     public Long getId() {
