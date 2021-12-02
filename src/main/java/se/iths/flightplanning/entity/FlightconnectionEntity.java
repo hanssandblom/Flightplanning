@@ -18,6 +18,18 @@ public class FlightconnectionEntity {
     @ManyToOne
     private RouteEntity route;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "routes_id")
+    private RouteEntity routes;
+
+    public RouteEntity getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(RouteEntity routes) {
+        this.routes = routes;
+    }
+
     public FlightconnectionEntity(String airplaneModel, int numberOfSeat, int numberOfStaff) {
         this.airplaneModel = airplaneModel;
         this.numberOfSeat = numberOfSeat;

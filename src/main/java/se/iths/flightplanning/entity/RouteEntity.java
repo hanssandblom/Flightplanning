@@ -16,7 +16,7 @@ public class RouteEntity {
     private Long id;
     private String routeName;
 
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "routes", cascade = CascadeType.ALL)
     private List<FlightconnectionEntity> routes = new ArrayList<>();
 
     @ManyToMany(mappedBy = "routeNames")
@@ -24,10 +24,10 @@ public class RouteEntity {
 
 
 
-//    public void addRoute(FlightconnectionEntity route){
-//        routes.add(route);
-//        route.setRoute(this);
-//    }
+    public void addRoute(FlightconnectionEntity route){
+        routes.add(route);
+        route.setRoute(this);
+    }
 
     public RouteEntity(String routeName) {
         this.routeName = routeName;

@@ -7,7 +7,7 @@ import se.iths.flightplanning.entity.RouteEntity;
 import se.iths.flightplanning.service.RouteService;
 
 @RestController
-@RequestMapping("route")
+@RequestMapping("routes")
 public class RouteController {
 
     private final RouteService routeService;
