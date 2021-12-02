@@ -7,36 +7,29 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class FlightconnectionEntity {
+public class AirplaneEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String airplaneModel;
+    private String airplaneName;
     private int numberOfSeat;
     private int numberOfStaff;
-    @ManyToOne
-    private RouteEntity route;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "routes_id")
     private RouteEntity routes;
 
-    public RouteEntity getRoutes() {
-        return routes;
-    }
+    @ManyToMany(mappedBy = "airplaneNames")
+    private Set<UserEntity> users;
 
-    public void setRoutes(RouteEntity routes) {
-        this.routes = routes;
-    }
-
-    public FlightconnectionEntity(String airplaneModel, int numberOfSeat, int numberOfStaff) {
-        this.airplaneModel = airplaneModel;
+    public AirplaneEntity(String airplaneName, int numberOfSeat, int numberOfStaff) {
+        this.airplaneName = airplaneName;
         this.numberOfSeat = numberOfSeat;
         this.numberOfStaff = numberOfStaff;
     }
 
-    public FlightconnectionEntity() {
+    public AirplaneEntity() {
     }
 
     public Long getId() {
@@ -47,12 +40,12 @@ public class FlightconnectionEntity {
         this.id = id;
     }
 
-    public String getAirplaneModel() {
-        return airplaneModel;
+    public String getAirplaneName() {
+        return airplaneName;
     }
 
-    public void setAirplaneModel(String airplaneModel) {
-        this.airplaneModel = airplaneModel;
+    public void setAirplaneName(String airplaneName) {
+        this.airplaneName = airplaneName;
     }
 
     public int getNumberOfSeat() {
@@ -71,11 +64,22 @@ public class FlightconnectionEntity {
         this.numberOfStaff = numberOfStaff;
     }
 
-    public RouteEntity getRoute() {
-        return route;
+    @JsonIgnore
+    public Set<UserEntity> getUsers() {
+        return users;
     }
 
-    public void setRoute(RouteEntity route) {
-        this.route = route;
+    public void setUsers(Set<UserEntity> users) {
+        this.users = users;
     }
+
+    @JsonIgnore
+    public RouteEntity getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(RouteEntity routes) {
+        this.routes = routes;
+    }
+
 }

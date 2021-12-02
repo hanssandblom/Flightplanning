@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,17 +16,10 @@ public class RouteEntity {
     private String routeName;
 
     @OneToMany(mappedBy = "routes", cascade = CascadeType.ALL)
-    private List<FlightconnectionEntity> routes = new ArrayList<>();
+    private List<AirplaneEntity> routes = new ArrayList<>();
 
     @ManyToMany(mappedBy = "routeNames")
     private Set<UserEntity> users;
-
-
-
-    public void addRoute(FlightconnectionEntity route){
-        routes.add(route);
-        route.setRoute(this);
-    }
 
     public RouteEntity(String routeName) {
         this.routeName = routeName;
@@ -59,5 +51,14 @@ public class RouteEntity {
 
     public void setUsers(Set<UserEntity> users) {
         this.users = users;
+    }
+
+    @JsonIgnore
+    public List<AirplaneEntity> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<AirplaneEntity> routes) {
+        this.routes = routes;
     }
 }
