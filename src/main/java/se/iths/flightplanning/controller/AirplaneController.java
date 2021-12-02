@@ -7,7 +7,7 @@
 //import se.iths.flightplanning.service.AirplaneService;
 //
 //@RestController
-//@RequestMapping("airplaneModels")
+//@RequestMapping("routeNames")
 //public class AirplaneController {
 //
 //    private final AirplaneService airplaneService;

@@ -1,24 +1,24 @@
 package se.iths.flightplanning.service;
 
 import org.springframework.stereotype.Service;
-import se.iths.flightplanning.entity.AirplaneEntity;
+import se.iths.flightplanning.entity.RouteEntity;
 import se.iths.flightplanning.entity.UserEntity;
-import se.iths.flightplanning.repository.AirplaneRepository;
+import se.iths.flightplanning.repository.RouteRepository;
 import se.iths.flightplanning.repository.UserRepository;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
-    private final AirplaneRepository airplaneRepository;
+    private final RouteRepository airplaneRepository;
 
-    public UserService(UserRepository userRepository, AirplaneRepository airplaneRepository) {
+    public UserService(UserRepository userRepository, RouteRepository airplaneRepository) {
         this.airplaneRepository = airplaneRepository;
         this.userRepository = userRepository;
     }
 
     public UserEntity createUser(UserEntity userEntity) {
-        AirplaneEntity airplaneToAdd = airplaneRepository.findByAirplaneModel("Modell101");
+        RouteEntity airplaneToAdd = airplaneRepository.findByRouteName("Gbg-Sthlm");
         userEntity.addAirplane(airplaneToAdd);
         return userRepository.save(userEntity);
     }

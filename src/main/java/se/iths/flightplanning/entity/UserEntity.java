@@ -25,11 +25,11 @@ public class UserEntity {
     private List<FlightconnectionEntity> routes = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<AirplaneEntity> airplaneModels = new HashSet<>();
+    private Set<RouteEntity> routeNames = new HashSet<>();
 
-    public void addAirplane(AirplaneEntity airplaneModel) {
-        airplaneModels.add(airplaneModel);
-        airplaneModel.getUsers().add(this);
+    public void addAirplane(RouteEntity routeName) {
+        routeNames.add(routeName);
+        routeName.getUsers().add(this);
     }
 
     public void addRoute(FlightconnectionEntity route){
@@ -49,12 +49,12 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public Set<AirplaneEntity> getAirplaneModels() {
-        return airplaneModels;
+    public Set<RouteEntity> getRouteNames() {
+        return routeNames;
     }
 
-    public void setAirplaneModels(Set<AirplaneEntity> airplaneModels) {
-        this.airplaneModels = airplaneModels;
+    public void setRouteNames(Set<RouteEntity> routeNames) {
+        this.routeNames = routeNames;
     }
 
     public Long getId() {
@@ -113,6 +113,7 @@ public class UserEntity {
         this.password = password;
     }
 
+    @JsonIgnore
     public List<FlightconnectionEntity> getRoutes() {
         return routes;
     }

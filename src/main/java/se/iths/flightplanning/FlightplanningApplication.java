@@ -4,8 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import se.iths.flightplanning.entity.AirplaneEntity;
-import se.iths.flightplanning.repository.AirplaneRepository;
+import se.iths.flightplanning.entity.RouteEntity;
+import se.iths.flightplanning.repository.RouteRepository;
 
 @SpringBootApplication
 public class FlightplanningApplication {
@@ -15,9 +15,9 @@ public class FlightplanningApplication {
 	}
 
 	@Bean
-	public CommandLineRunner setUpAirplaneModel(AirplaneRepository airplaneRepository) {
+	public CommandLineRunner setUpRouteName(RouteRepository airplaneRepository) {
 		return (args) -> {
-			airplaneRepository.save(new AirplaneEntity("Modell101",1000, 10));
+			airplaneRepository.save(new RouteEntity("Gbg-Sthlm"));
 		};
 	}
 
