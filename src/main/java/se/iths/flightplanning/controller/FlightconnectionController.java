@@ -7,7 +7,7 @@ import se.iths.flightplanning.entity.FlightconnectionEntity;
 import se.iths.flightplanning.service.FlightconnectionService;
 
 @RestController
-@RequestMapping("routes")
+@RequestMapping("flightconnction")
 public class FlightconnectionController {
 
     private final FlightconnectionService flightconnectionService;

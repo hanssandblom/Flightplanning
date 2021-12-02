@@ -12,12 +12,16 @@ public class FlightconnectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
+    private String airplaneModel;
+    private int numberOfSeat;
+    private int numberOfStaff;
     @ManyToOne
-    private UserEntity user;
+    private RouteEntity route;
 
-    public FlightconnectionEntity(String name) {
-        this.name = name;
+    public FlightconnectionEntity(String airplaneModel, int numberOfSeat, int numberOfStaff) {
+        this.airplaneModel = airplaneModel;
+        this.numberOfSeat = numberOfSeat;
+        this.numberOfStaff = numberOfStaff;
     }
 
     public FlightconnectionEntity() {
@@ -31,19 +35,35 @@ public class FlightconnectionEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAirplaneModel() {
+        return airplaneModel;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAirplaneModel(String airplaneModel) {
+        this.airplaneModel = airplaneModel;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public int getNumberOfSeat() {
+        return numberOfSeat;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setNumberOfSeat(int numberOfSeat) {
+        this.numberOfSeat = numberOfSeat;
+    }
+
+    public int getNumberOfStaff() {
+        return numberOfStaff;
+    }
+
+    public void setNumberOfStaff(int numberOfStaff) {
+        this.numberOfStaff = numberOfStaff;
+    }
+
+    public RouteEntity getRoute() {
+        return route;
+    }
+
+    public void setRoute(RouteEntity route) {
+        this.route = route;
     }
 }

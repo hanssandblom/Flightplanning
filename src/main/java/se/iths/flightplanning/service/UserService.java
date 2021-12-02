@@ -10,16 +10,16 @@ import se.iths.flightplanning.repository.UserRepository;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final RouteRepository airplaneRepository;
+    private final RouteRepository routeRepository;
 
-    public UserService(UserRepository userRepository, RouteRepository airplaneRepository) {
-        this.airplaneRepository = airplaneRepository;
+    public UserService(UserRepository userRepository, RouteRepository routeRepository) {
+        this.routeRepository = routeRepository;
         this.userRepository = userRepository;
     }
 
     public UserEntity createUser(UserEntity userEntity) {
-        RouteEntity airplaneToAdd = airplaneRepository.findByRouteName("Gbg-Sthlm");
-        userEntity.addAirplane(airplaneToAdd);
+        RouteEntity routeToAdd = routeRepository.findByRouteName("Gbg-Sthlm");
+        userEntity.addRoute(routeToAdd);
         return userRepository.save(userEntity);
     }
     public Iterable<UserEntity> findAllUsers() {

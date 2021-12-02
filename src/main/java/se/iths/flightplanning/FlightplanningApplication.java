@@ -15,9 +15,9 @@ public class FlightplanningApplication {
 	}
 
 	@Bean
-	public CommandLineRunner setUpRouteName(RouteRepository airplaneRepository) {
+	public CommandLineRunner setUpRouteName(RouteRepository routeRepository) {
 		return (args) -> {
-			airplaneRepository.save(new RouteEntity("Gbg-Sthlm"));
+			routeRepository.save(new RouteEntity("Gbg-Sthlm"));
 		};
 	}
 
