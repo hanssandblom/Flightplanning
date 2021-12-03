@@ -16,7 +16,8 @@ public class RouteEntity {
     private String routeName;
 
     @OneToMany(mappedBy = "routes", cascade = CascadeType.ALL)
-    private List<AirplaneEntity> routes = new ArrayList<>();
+    private Set<AirplaneEntity> routes;
+    //private List<AirplaneEntity> routes = new ArrayList<>();
 
     @ManyToMany(mappedBy = "routeNames")
     private Set<UserEntity> users;
@@ -53,12 +54,19 @@ public class RouteEntity {
         this.users = users;
     }
 
-    @JsonIgnore
-    public List<AirplaneEntity> getRoutes() {
+    public Set<AirplaneEntity> getRoutes() {
         return routes;
     }
 
-    public void setRoutes(List<AirplaneEntity> routes) {
+    public void setRoutes(Set<AirplaneEntity> routes) {
         this.routes = routes;
     }
+    //@JsonIgnore
+    //public List<AirplaneEntity> getRoutes() {
+        //return routes;
+    //}
+
+    //public void setRoutes(List<AirplaneEntity> routes) {
+        //this.routes = routes;
+    //}
 }

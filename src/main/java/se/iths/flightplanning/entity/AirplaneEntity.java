@@ -3,7 +3,8 @@ package se.iths.flightplanning.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,20 +18,46 @@ public class AirplaneEntity {
     private int numberOfStaff;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "routes_id")
+    @JoinColumn(columnDefinition="integer", name = "routes_id")
     private RouteEntity routes;
 
     @ManyToMany(mappedBy = "airplaneNames")
     private Set<UserEntity> users;
 
-    public AirplaneEntity(String airplaneName, int numberOfSeat, int numberOfStaff) {
+    @OneToMany(mappedBy = "airplane", cascade = CascadeType.ALL)
+    //private List<WorkerEntity> staff = new ArrayList<>();
+    private Set<WorkerEntity> staff;
+
+    public AirplaneEntity(String airplaneName, int numberOfSeat) {
         this.airplaneName = airplaneName;
         this.numberOfSeat = numberOfSeat;
-        this.numberOfStaff = numberOfStaff;
     }
 
     public AirplaneEntity() {
     }
+
+    public int getNumberOfStaff() {
+        return numberOfStaff;
+    }
+
+    public void setNumberOfStaff(int numberOfStaff) {
+        this.numberOfStaff = numberOfStaff;
+    }
+
+    public Set<WorkerEntity> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Set<WorkerEntity> staff) {
+        this.staff = staff;
+    }
+//    public List<WorkerEntity> getStaff() {
+//        return staff;
+//    }
+//
+//    public void setStaff(List<WorkerEntity> staff) {
+//        this.staff = staff;
+//    }
 
     public Long getId() {
         return id;
@@ -56,14 +83,6 @@ public class AirplaneEntity {
         this.numberOfSeat = numberOfSeat;
     }
 
-    public int getNumberOfStaff() {
-        return numberOfStaff;
-    }
-
-    public void setNumberOfStaff(int numberOfStaff) {
-        this.numberOfStaff = numberOfStaff;
-    }
-
     @JsonIgnore
     public Set<UserEntity> getUsers() {
         return users;
@@ -73,7 +92,7 @@ public class AirplaneEntity {
         this.users = users;
     }
 
-    @JsonIgnore
+    //@JsonIgnore
     public RouteEntity getRoutes() {
         return routes;
     }

@@ -26,7 +26,7 @@ public class FlightplanningApplication {
 	@Bean
 	public CommandLineRunner setUpAirplaneName(AirplaneRepository airplaneRepository) {
 		return (args) -> {
-			airplaneRepository.save(new AirplaneEntity("Model101", 100, 10));
+			airplaneRepository.save(new AirplaneEntity("Model101", 100));
 		};
 	}
 
