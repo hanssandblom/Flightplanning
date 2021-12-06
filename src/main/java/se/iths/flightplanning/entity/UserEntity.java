@@ -29,13 +29,13 @@ public class UserEntity {
         routeName.getUsers().add(this);
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<AirplaneEntity> airplaneNames = new HashSet<>();
-
-    public void addAirplane(AirplaneEntity airplaneName) {
-        airplaneNames.add(airplaneName);
-        airplaneName.getUsers().add(this);
-    }
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private Set<AirplaneEntity> airplaneNames = new HashSet<>();
+//
+//    public void addAirplane(AirplaneEntity airplaneName) {
+//        airplaneNames.add(airplaneName);
+//        airplaneName.getUsers().add(this);
+//    }
 
     public UserEntity(String firstName, String lastName, String email, String telephone, String username, String password) {
         this.firstName = firstName;
@@ -49,13 +49,13 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public Set<AirplaneEntity> getAirplaneNames() {
-        return airplaneNames;
-    }
-
-    public void setAirplaneNames(Set<AirplaneEntity> airplaneNames) {
-        this.airplaneNames = airplaneNames;
-    }
+//    public Set<AirplaneEntity> getAirplaneNames() {
+//        return airplaneNames;
+//    }
+//
+//    public void setAirplaneNames(Set<AirplaneEntity> airplaneNames) {
+//        this.airplaneNames = airplaneNames;
+//    }
 
     public Set<RouteEntity> getRouteNames() {
         return routeNames;

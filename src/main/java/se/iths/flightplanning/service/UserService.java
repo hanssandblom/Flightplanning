@@ -13,20 +13,16 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final RouteRepository routeRepository;
-    private final AirplaneRepository airplaneRepository;
 
-    public UserService(UserRepository userRepository, RouteRepository routeRepository, AirplaneRepository airplaneRepository) {
+
+    public UserService(UserRepository userRepository, RouteRepository routeRepository) {
         this.routeRepository = routeRepository;
         this.userRepository = userRepository;
-        this.airplaneRepository = airplaneRepository;
     }
 
     public UserEntity createUser(UserEntity userEntity) {
         RouteEntity routeToAdd = routeRepository.findByRouteName("Gbg-Sthlm");
         userEntity.addRoute(routeToAdd);
-        AirplaneEntity airplaneToAdd = airplaneRepository.findByAirplaneName("Model101");
-        userEntity.addAirplane(airplaneToAdd);
-        userRepository.save(userEntity);
         return userEntity;
     }
     public Iterable<UserEntity> findAllUsers() {
