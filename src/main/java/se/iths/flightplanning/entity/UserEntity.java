@@ -1,11 +1,7 @@
 package se.iths.flightplanning.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,14 +27,6 @@ public class UserEntity {
         routeName.getUsers().add(this);
     }
 
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    private Set<AirplaneEntity> airplaneNames = new HashSet<>();
-//
-//    public void addAirplane(AirplaneEntity airplaneName) {
-//        airplaneNames.add(airplaneName);
-//        airplaneName.getUsers().add(this);
-//    }
-
     public UserEntity(String firstName, String lastName, String email, String telephone, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -51,13 +39,6 @@ public class UserEntity {
     public UserEntity() {
     }
 
-//    public Set<AirplaneEntity> getAirplaneNames() {
-//        return airplaneNames;
-//    }
-//
-//    public void setAirplaneNames(Set<AirplaneEntity> airplaneNames) {
-//        this.airplaneNames = airplaneNames;
-//    }
 
     public Set<RouteEntity> getRouteNames() {
         return routeNames;

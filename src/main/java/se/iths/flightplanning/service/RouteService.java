@@ -10,17 +10,12 @@ import se.iths.flightplanning.repository.RouteRepository;
 public class RouteService {
 
     private final RouteRepository routeRepository;
-    private final AirplaneRepository airplaneRepository;
 
-    public RouteService(RouteRepository routeRepository, AirplaneRepository airplaneRepository) {
+    public RouteService(RouteRepository routeRepository) {
         this.routeRepository = routeRepository;
-        this.airplaneRepository = airplaneRepository;
     }
 
     public RouteEntity createRoute(RouteEntity routeEntity){
-        AirplaneEntity airplaneToAdd = airplaneRepository.findByAirplaneName("Model101");
-        routeEntity.addAirplane(airplaneToAdd);
-//        routeRepository.save(routeEntity);
         return routeRepository.save(routeEntity);
     }
 

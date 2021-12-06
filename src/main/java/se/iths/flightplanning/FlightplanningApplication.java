@@ -35,9 +35,9 @@ public class FlightplanningApplication implements CommandLineRunner {
 
 		UserEntity user = new UserEntity("Hans", "Sandblom", "sdgdfsg@dhdh.se", "089674545", "username", "password");
 		RouteEntity rutt1 = new RouteEntity("Gbg-Sthlm");
-		AirplaneEntity air1 = new AirplaneEntity("Model-101");
+		AirplaneEntity air1 = new AirplaneEntity("Model-101", 100, 10);
 
-//		rutt1.getAirplaneNames().add(air1);
+		rutt1.getAirplaneNames().add(air1);
 		user.getRouteNames().add(rutt1);
 
 		userRepository.save(user);

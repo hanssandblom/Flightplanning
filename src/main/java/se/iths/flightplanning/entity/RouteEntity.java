@@ -14,20 +14,13 @@ public class RouteEntity {
     private Long id;
     private String routeName;
 
-    @OneToMany(mappedBy = "routes", cascade = CascadeType.ALL)
-    private Set<AirplaneEntity> routes;
 
     @ManyToMany(mappedBy = "routeNames", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<UserEntity> users;
 
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<AirplaneEntity> airplaneNames = new HashSet<>();
 
-    public void addAirplane(AirplaneEntity airplaneName) {
-        airplaneNames.add(airplaneName);
-        airplaneName.getPlaneNames().add(this);
-    }
 
     public RouteEntity(String routeName) {
         this.routeName = routeName;
@@ -35,7 +28,6 @@ public class RouteEntity {
 
     public RouteEntity() {
     }
-
 
     public Set<AirplaneEntity> getAirplaneNames() {
         return airplaneNames;
@@ -68,13 +60,5 @@ public class RouteEntity {
 
     public void setUsers(Set<UserEntity> users) {
         this.users = users;
-    }
-
-    public Set<AirplaneEntity> getRoutes() {
-        return routes;
-    }
-
-    public void setRoutes(Set<AirplaneEntity> routes) {
-        this.routes = routes;
     }
 }

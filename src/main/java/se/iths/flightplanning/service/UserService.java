@@ -21,8 +21,6 @@ public class UserService {
     }
 
     public UserEntity createUser(UserEntity userEntity) {
-        RouteEntity routeToAdd = routeRepository.findByRouteName("Gbg-Sthlm");
-        userEntity.addRoute(routeToAdd);
         return userEntity;
     }
     public Iterable<UserEntity> findAllUsers() {
