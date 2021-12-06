@@ -17,7 +17,7 @@ public class RouteEntity {
     @OneToMany(mappedBy = "routes", cascade = CascadeType.ALL)
     private Set<AirplaneEntity> routes;
 
-    @ManyToMany(mappedBy = "routeNames")
+    @ManyToMany(mappedBy = "routeNames", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<UserEntity> users;
 
 
