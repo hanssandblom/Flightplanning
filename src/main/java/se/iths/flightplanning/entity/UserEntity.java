@@ -21,21 +21,21 @@ public class UserEntity {
     private String username;
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<FlightconnectionEntity> routes = new ArrayList<>();
-
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<RouteEntity> routeNames = new HashSet<>();
 
-    public void addAirplane(RouteEntity routeName) {
+    public void addRoute(RouteEntity routeName) {
         routeNames.add(routeName);
         routeName.getUsers().add(this);
     }
 
-    public void addRoute(FlightconnectionEntity route){
-        routes.add(route);
-        route.setUser(this);
-    }
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private Set<AirplaneEntity> airplaneNames = new HashSet<>();
+//
+//    public void addAirplane(AirplaneEntity airplaneName) {
+//        airplaneNames.add(airplaneName);
+//        airplaneName.getUsers().add(this);
+//    }
 
     public UserEntity(String firstName, String lastName, String email, String telephone, String username, String password) {
         this.firstName = firstName;
@@ -48,6 +48,14 @@ public class UserEntity {
 
     public UserEntity() {
     }
+
+//    public Set<AirplaneEntity> getAirplaneNames() {
+//        return airplaneNames;
+//    }
+//
+//    public void setAirplaneNames(Set<AirplaneEntity> airplaneNames) {
+//        this.airplaneNames = airplaneNames;
+//    }
 
     public Set<RouteEntity> getRouteNames() {
         return routeNames;
@@ -111,15 +119,6 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @JsonIgnore
-    public List<FlightconnectionEntity> getRoutes() {
-        return routes;
-    }
-
-    public void setRoutes(List<FlightconnectionEntity> routes) {
-        this.routes = routes;
     }
 
 }
