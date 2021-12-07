@@ -49,7 +49,7 @@ public class WorkerEntity {
     public void setFlightAttendant(int flightAttendant) {
         this.flightAttendant = flightAttendant;
     }
-
+    @JsonIgnore
     public AirplaneEntity getAirplane() {
         return airplane;
     }
