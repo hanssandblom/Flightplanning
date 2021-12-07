@@ -1,8 +1,10 @@
 package se.iths.flightplanning.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,8 +21,8 @@ public class AirplaneEntity {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private RouteEntity planeNames;
 
-    @OneToMany(mappedBy = "airplane", cascade = CascadeType.ALL)
-    private Set<WorkerEntity> staff;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<WorkerEntity> staff = new HashSet<>();
 
     public AirplaneEntity(String airplaneName, int numberOfSeat, int numberOfStaff) {
         this.airplaneName = airplaneName;

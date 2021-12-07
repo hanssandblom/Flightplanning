@@ -1,5 +1,6 @@
 package se.iths.flightplanning.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -14,26 +15,15 @@ public class WorkerEntity {
     private int pilot;
     private int flightAttendant;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(columnDefinition="integer", name = "airplane_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private AirplaneEntity airplane;
 
-    public WorkerEntity(int pilot, int flightAttendant, AirplaneEntity airplane) {
+    public WorkerEntity(int pilot, int flightAttendant) {
         this.pilot = pilot;
         this.flightAttendant = flightAttendant;
-        this.airplane = airplane;
     }
 
     public WorkerEntity() {
-    }
-
-    //@JsonIgnore
-    public AirplaneEntity getAirplane() {
-        return airplane;
-    }
-
-    public void setAirplane(AirplaneEntity airplane) {
-        this.airplane = airplane;
     }
 
     public Long getId() {
@@ -58,5 +48,13 @@ public class WorkerEntity {
 
     public void setFlightAttendant(int flightAttendant) {
         this.flightAttendant = flightAttendant;
+    }
+
+    public AirplaneEntity getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(AirplaneEntity airplane) {
+        this.airplane = airplane;
     }
 }
