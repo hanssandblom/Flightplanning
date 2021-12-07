@@ -37,9 +37,9 @@ public class FlightplanningApplication implements CommandLineRunner {
 		RouteEntity rutt1 = new RouteEntity("Gbg-Sthlm");
 		AirplaneEntity air1 = new AirplaneEntity("Model-101", 100, 10);
 		WorkerEntity worker = new WorkerEntity(2,8);
-//		FoodEntity food= new FoodEntity("Ja");
-//
-//		rutt1.getFoods().add(food);
+		FoodEntity food= new FoodEntity("Ja");
+
+		rutt1.setFood(food);
 		air1.getStaff().add(worker);
 		rutt1.getAirplaneNames().add(air1);
 		user.getRouteNames().add(rutt1);

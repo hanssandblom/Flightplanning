@@ -66,11 +66,11 @@ public class RouteEntity {
         this.users = users;
     }
 
-    public FoodEntity getFoods() {
+    public FoodEntity getFood() {
         return foods;
     }
 
-    public void setFoods(FoodEntity foods) {
+    public void setFood(FoodEntity foods) {
         this.foods = foods;
     }
 }

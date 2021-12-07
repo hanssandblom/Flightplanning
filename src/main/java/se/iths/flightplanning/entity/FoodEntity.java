@@ -1,5 +1,7 @@
 package se.iths.flightplanning.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,13 +11,13 @@ public class FoodEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Boolean food;
+    private String food;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private RouteEntity foodRoute;
 
 
-    public FoodEntity(Boolean food) {
+    public FoodEntity(String food) {
         this.food = food;
     }
 
@@ -30,14 +32,14 @@ public class FoodEntity {
         this.id = id;
     }
 
-    public Boolean getFood() {
+    public String getFood() {
         return food;
     }
 
-    public void setFood(Boolean food) {
+    public void setFood(String food) {
         this.food = food;
     }
-
+    @JsonIgnore
     public RouteEntity getFoodRoute() {
         return foodRoute;
     }
