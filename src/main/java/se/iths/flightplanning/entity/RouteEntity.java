@@ -21,6 +21,10 @@ public class RouteEntity {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<AirplaneEntity> airplaneNames = new HashSet<>();
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private FoodEntity foods;
+
+
 
     public RouteEntity(String routeName) {
         this.routeName = routeName;
@@ -60,5 +64,13 @@ public class RouteEntity {
 
     public void setUsers(Set<UserEntity> users) {
         this.users = users;
+    }
+
+    public FoodEntity getFoods() {
+        return foods;
+    }
+
+    public void setFoods(FoodEntity foods) {
+        this.foods = foods;
     }
 }
