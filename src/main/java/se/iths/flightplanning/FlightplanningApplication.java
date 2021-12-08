@@ -1,19 +1,24 @@
 package se.iths.flightplanning;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.jms.core.JmsTemplate;
 import se.iths.flightplanning.entity.*;
 import se.iths.flightplanning.repository.*;
-
-import java.util.Set;
 
 @SpringBootApplication
 public class FlightplanningApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FlightplanningApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(FlightplanningApplication.class, args);
+
+		JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
+
+		UserEntity user = new UserEntity("Sven", "Gurka", "sven@gurka.se", "0315756856", "username", "password");
+
+		jmsTemplate.convertAndSend("user", user);
 	}
 
 	AirplaneRepository airplaneRepository;
@@ -46,9 +51,8 @@ public class FlightplanningApplication implements CommandLineRunner {
 		rutt1.getAirplaneNames().add(air1);
 		user.getRouteNames().add(rutt1);
 
-
-
 		userRepository.save(user);
 
 	}
+
 }

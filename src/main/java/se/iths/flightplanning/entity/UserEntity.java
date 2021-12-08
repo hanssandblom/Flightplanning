@@ -22,11 +22,6 @@ public class UserEntity {
     inverseJoinColumns = { @JoinColumn(name = "route_id") })
     private Set<RouteEntity> routeNames = new HashSet<>();
 
-    public void addRoute(RouteEntity routeName) {
-        routeNames.add(routeName);
-        routeName.getUsers().add(this);
-    }
-
     public UserEntity(String firstName, String lastName, String email, String telephone, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -39,6 +34,10 @@ public class UserEntity {
     public UserEntity() {
     }
 
+    public void addRoute(RouteEntity routeName) {
+        routeNames.add(routeName);
+        routeName.getUsers().add(this);
+    }
 
     public Set<RouteEntity> getRouteNames() {
         return routeNames;
