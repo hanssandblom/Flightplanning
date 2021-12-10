@@ -14,6 +14,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>flightplanning</name>
 	<description>Group project ITHS JU20 Complex programming</description>
+	
+	<distributionManagement>
+	   <repository>
+	     <id>github</id>
+	     <name>GitHub hanssandblom Apache Maven Packages</name>
+	     <url>https://maven.pkg.github.com/hanssandblom/Flightplanning</url>
+	   </repository>
+	</distributionManagement>
 
 	<properties>
 		<java.version>11</java.version>
